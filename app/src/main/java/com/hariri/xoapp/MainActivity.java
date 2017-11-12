@@ -17,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
     int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
     boolean gameIsActive = true;
 
-    public void dropIn (View view) {
-
+    public void dropIn(View view) {
 
 
         ImageView XO = (ImageView) view;
@@ -28,11 +27,10 @@ public class MainActivity extends AppCompatActivity {
         // The 8 winning combinations
 
         int[][] gamewinning = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7,}, {2, 5, 8},
-                {0, 4, 8,}, {2 ,4 ,6} };
+                {0, 4, 8,}, {2, 4, 6}};
 
 
-
-        if (gameState[isTapped] == 2 && gameIsActive){
+        if (gameState[isTapped] == 2 && gameIsActive) {
 
             gameState[isTapped] = activePlayer;
             XO.setTranslationY(-1000f);
@@ -51,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             XO.animate().translationYBy(1000f).rotation(360).setDuration(750);
-            for(int[] winningPosition : gamewinning) {
+            for (int[] winningPosition : gamewinning) {
 
                 if (gameState[winningPosition[0]] == gameState[winningPosition[1]]
                         && gameState[winningPosition[1]] == gameState[winningPosition[2]]
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                     String winner = "O";
 
-                    if(gameState[winningPosition[0]] == 0) {
+                    if (gameState[winningPosition[0]] == 0) {
 
                         winner = "X";
 
@@ -73,35 +71,33 @@ public class MainActivity extends AppCompatActivity {
                     layout.setVisibility(View.VISIBLE);
 
 
-                }else {
+                } else {
 
                     boolean gameIsOver = true;
 
-                    for (int counterState :gameState) {
+                    for (int counterState : gameState) {
 
                         if (counterState == 2) gameIsOver = false;
 
                     }
 
 
+                    if (gameIsOver) {
 
+                        TextView winnerMessage = (TextView) findViewById(R.id.winnerMessage);
 
-                        if (gameIsOver) {
-
-                            TextView winnerMessage = (TextView) findViewById(R.id.winnerMessage);
-
-                            winnerMessage.setText("It's a draw!");
-                            LinearLayout layout = (LinearLayout) findViewById(R.id.playAgainLayout);
-                            layout.setVisibility(View.VISIBLE);
-
-                        }
+                        winnerMessage.setText("It's a draw!");
+                        LinearLayout layout = (LinearLayout) findViewById(R.id.playAgainLayout);
+                        layout.setVisibility(View.VISIBLE);
 
                     }
 
                 }
 
             }
+
         }
+    }
 
 
     public void playAgain(View view) {
@@ -114,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         activePlayer = 0;
 //        gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
-        for (int i = 0;i<gameState.length; i++) {
+        for (int i = 0; i < gameState.length; i++) {
 
             gameState[i] = 2;
 
@@ -122,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
 
-        for (int i = 0; i< gridLayout.getChildCount(); i++) {
+        for (int i = 0; i < gridLayout.getChildCount(); i++) {
 
             ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
 
@@ -134,12 +130,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         System.out.println("Hello");
-        
-        for(int si = 0; si <6 ; si++) {
-            
+
+        for (int si = 0; si < 6; si++) {
+
             System.out.println("Hello, " + si);
-            
+
+        }
     }
 }
