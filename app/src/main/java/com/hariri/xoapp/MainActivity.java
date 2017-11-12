@@ -134,5 +134,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         System.out.println("Hello");
+        
+        for(int si = 0; si <6 ; si++) {
+            
+            System.out.println("Hello, " + si);
+            
     }
 }
